@@ -1,0 +1,30 @@
+# 38. Count and Say
+
+class Solution:
+    def countAndSay(self, n: int) -> str:
+        if n == 1:
+            return "1"
+        
+        prev = self.countAndSay(n - 1)
+
+        res = ""
+        i = 0
+        while i < len(prev):
+            count = 1
+            while i + 1 < len(prev) and prev[i] == prev[i + 1]:
+                count += 1
+                i += 1
+            res += str(count) + prev[i]
+            i += 1
+
+        return res
+    
+sol = Solution()
+
+print(str(1))
+
+print(sol.countAndSay(1))
+print(sol.countAndSay(2))
+print(sol.countAndSay(3))
+print(sol.countAndSay(4))
+print(sol.countAndSay(5))
